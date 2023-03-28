@@ -256,12 +256,9 @@ def run_module():
             try:
                 image = controller.open_image_file(params['group_image'])
             except Exception as e:
-                print(e)
                 exit_module_error('Image ' + params['group_image'] + ' doesn\'t exist.')
             image_hash = controller.get_image_hash(image)
-            print(image_hash)
             if not group.image_hash == image_hash:
-                print(group.image_hash)
                 group.image = image
                 group.image_hash = image_hash
                 controller.set_new_group_image(group)
